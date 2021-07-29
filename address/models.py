@@ -34,10 +34,10 @@ class State(models.Model):
         verbose_name_plural = "States"
 
     def __str__(self):
-        return f'{self.id}-{self.country}-{self.name}'
+        return f'{self.country} - {self.name}'
 
 class City(models.Model):
-    state = models.ForeignKey(State, verbose_name="State", related_name="city", null=False, on_delete=models.CASCADE)
+    state = models.ForeignKey(State, verbose_name="Country - State", related_name="city", null=False, on_delete=models.CASCADE)
     name = models.CharField(verbose_name="City Name", null=False, max_length=50,
                             help_text='Required. 50 characters or fewer. Letters, digits and @/./+/-/_ only.',
                             validators=[validators.RegexValidator(r'^[\w .@+-_]+$', 'Enter a valid name. This value may contain only letters, numbers and @/./+/-/_ characters.', 'invalid')])

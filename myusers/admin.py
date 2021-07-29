@@ -1,14 +1,16 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from myusers.models import UserProfile, UserImage
+from django.contrib.auth.models import User, Group
 # Register your models here.
+admin.site.unregister(Group)
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'img', 'dob','gender')
     list_display_links = ("user",)
     # search_fields = ("name", "id")
     # list_filter = ("name", "status", "featured")
     fields = (('user',), 'image', ('dob', 'gender'), 'user_image')
-    # icon_name = 'apps'
+    icon_name = 'face'
     readonly_fields = ["user_image"]
     # fieldsets = [
     #     (None, {'fields': ['id', 'name', 'image']}),

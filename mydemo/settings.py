@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,7 +33,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    #third_party
+    'material',
+    'material.admin',
+    # default
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -121,6 +126,16 @@ USE_L10N = True
 
 USE_TZ = True
 
+MATERIAL_ADMIN_SITE = {
+    'HEADER': _('Mydemo'),  # Admin site header
+    'TITLE': _('Mydemo'),  # Admin site title
+    'SHOW_COUNTS': True,
+    # 'FAVICON': '../media/favicon.ico',
+    # 'PROFILE_PICTURE': '../media/chefsmall.png',  # Admin site profile picture (path to static should be specified)
+    # 'PROFILE_BG': '../media/chefbig.png',  # Admin site profile background (path to static should be specified)
+    # 'LOGIN_LOGO': '../media/chefsmall.png',  # Admin site logo on login page (path to static should be specified)
+    # 'LOGOUT_BG': '../media/chefbig.png',  # Admin site background on login/logout pages (path to static should be specified)
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
